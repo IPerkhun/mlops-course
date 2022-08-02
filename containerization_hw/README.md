@@ -17,7 +17,7 @@ docker-compose up
 ```
 
 ## Train
-To use your own files, go to the .env file and change the value of the variables without file extension.
+To use your own files, go to the .env file and change the value of the variables without file extension also add file to `containerization_hw/volume`
 
 For example: 
 ```bash
