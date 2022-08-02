@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  containerization_hw:
+    image: containerization_hw
+    volumes:
+      - ${PWD}/volume:/data
+    env_file:
+      - .env
