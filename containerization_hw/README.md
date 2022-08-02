@@ -1,4 +1,4 @@
-# Foobar
+# Description
 
 Contarization home work is first hw to see basic docker commands, building dockerfile, running a container, etc., to refresh basic commands for working in linux from the term (delete files, folders, move around the file system, try to install StarSpace on your linux).
 
@@ -6,8 +6,8 @@ Contarization home work is first hw to see basic docker commands, building docke
 
 
 ```bash
-git clone https://github.com/ivan-perkhun/MLOps_course.git \ 
-    cd containerization_hw
+git clone https://github.com/ivan-perkhun/mlops-course.git \ 
+    cd mlops-mlops-course/containerization_hw
 ```
 
 ## Usage
