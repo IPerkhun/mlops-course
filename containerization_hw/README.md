@@ -7,7 +7,7 @@ Contarization home work is first hw to see basic docker commands, building docke
 
 ```bash
 git clone https://github.com/ivan-perkhun/mlops-course.git \ 
-    cd mlops-mlops-course/containerization_hw
+    cd mlops-course/containerization_hw
 ```
 
 ## Usage
