@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  containerization_hw:
+  main:
     image: containerization_hw
     volumes:
       - ${PWD}/volume:/data

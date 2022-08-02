@@ -13,6 +13,7 @@ git clone https://github.com/ivan-perkhun/mlops-course.git \
 ## Usage
 
 ```bash
+docker build -t containerization_hw .
 docker-compose up
 ```
 
