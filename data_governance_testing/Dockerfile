@@ -16,7 +16,7 @@ RUN apt-get -qq update && \
     python3-pip python3-dev
 
 COPY ${PWD}/requirements.txt .
-RUN pip install --upgrade pip -f requirements.txt \ 
+RUN pip3 install -r requirements.txt \ 
     && rm requirements.txt
 
 CMD ["/bin/ping", "localhost"]
