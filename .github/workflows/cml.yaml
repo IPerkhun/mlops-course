@@ -1,0 +1,17 @@
+name: test-workflow
+on: [push]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    container: docker://ghcr.io/iterative/cml:0-dvc2-base1
+    steps:
+      - uses: actions/checkout@v2
+      - uses: iterative/setup-cml@v1
+      - name: Train model
+        run: |
+          # Your ML workflow goes here
+          pip install -r requirements.txt
+          python data_governance_testing/ai_service/train.py
+          
+          echo "MODEL METRICS"
+          cat metrics.txt
