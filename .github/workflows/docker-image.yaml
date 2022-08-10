@@ -21,7 +21,9 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the Docker image
-      run: docker build --file data_governance_testing/Dockerfile --tag $DOCKER_USER/mlops_course:$(date +%s) .
+      run: |
+        cd data_governance_testing
+        docker build Dockerfile -t $DOCKER_USER/mlops_course:hw_2_github .
       
     - name: Docker Push
       run: docker push $DOCKER_USER/mlops_course
