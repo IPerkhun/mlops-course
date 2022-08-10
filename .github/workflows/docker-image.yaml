@@ -13,17 +13,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: docker login
-      env:
-        DOCKER_USER: ${{secrets.DOCKER_USER}}
-        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-      run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
-    - name: Build the Docker image
-      run: |
-        cd data_governance_testing
-        docker build Dockerfile -t $DOCKER_USER/mlops_course:hw_2_github .
-      
-    - name: Docker Push
-      run: docker push $DOCKER_USER/mlops_course
+      - 
+        uses: 
+          actions/checkout@v2
+      - 
+        name: 
+          docker login
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+    
+      - 
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: data_governance_testing
+          push: true
+          tags: $DOCKER_USER/mlops_course:hw_2_github
+        
+
