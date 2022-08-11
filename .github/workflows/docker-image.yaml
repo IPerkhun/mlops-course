@@ -15,7 +15,7 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       -
-        uses: iterative/setup-tools@v1
+       uses: iterative/setup-cml@v1
       -
         name: Pyhton predict
         run: |
