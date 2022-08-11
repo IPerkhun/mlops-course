@@ -1,7 +1,8 @@
 matplotlib
 numpy
-pandas==1.2.4
 scikit-learn
 pytest
 click
 seaborn
+pandas
+
