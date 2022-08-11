@@ -36,14 +36,13 @@ jobs:
       -
         name: Pyhton predict
         run: |
-          pip3 install -r requirements.txt 
-          ls -al
-          python3 data_governance_testing/train.py
+          cd data_governance_testing
+          python3 ai_service/train.py
           
           echo "## Metrics result" > report.md
           cat metrics.txt >> report.md
           
-          cml-publish data_governance_testing/feature_importance.png --md >> report.md
-          cml-publish data_governance_testing/residuals.png --md >> report.md
+          cml-publish ai_service/feature_importance.png --md >> report.md
+          cml-publish ai_service/residuals.png --md >> report.md
           
           cml-send-comment report.md
