@@ -23,7 +23,7 @@ jobs:
         name: Pyhton predict
         run: |
           cd data_governance_testing
-          python3 pip3 install -r requirements.txt
+          pip3 install -r requirements.txt
           python3 train.py
           
           echo "## Metrics result" > report.md
