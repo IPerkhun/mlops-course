@@ -17,6 +17,7 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          pip3 install --upgrade pip
           pip3 install -r data_governance_testing/requirements.txt
           python3 data_governance_testing/train.py
 
