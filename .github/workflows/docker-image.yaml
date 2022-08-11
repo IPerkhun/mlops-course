@@ -7,8 +7,9 @@ on:
     branches: [ master ]
 
 jobs:
-  docker:
-    runs-on: ubuntu-latest
+  run: 
+    runs-on: [ ubuntu-latest ]
+    container: docker://dvcorg/cml-py3:latest
     steps:
       -
         uses: iterative/setup-tools@v1
