@@ -17,14 +17,13 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd data_governance_testing
-          pip3 install -r requirements.txt
+          pip3 install -r data_governance_testing/requirements.txt
           python3 train.py
 
           echo "## Metrics result" > report.md
-          cat metrics.txt >> report.md
+          cat data_governance_testing/metrics.txt >> report.md
 
-          cml-publish feature_importance.png --md >> report.md
-          cml-publish residuals.png --md >> report.md
+          cml-publish data_governance_testing/feature_importance.png --md >> report.md
+          cml-publish data_governance_testing/residuals.png --md >> report.md
 
           cml-send-comment report.md
