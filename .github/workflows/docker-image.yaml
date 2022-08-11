@@ -18,7 +18,7 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip3 install -r data_governance_testing/requirements.txt
-          python3 train.py
+          python3 data_governance_testing/train.py
 
           echo "## Metrics result" > report.md
           cat data_governance_testing/metrics.txt >> report.md
