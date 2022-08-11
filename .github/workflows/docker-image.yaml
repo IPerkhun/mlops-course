@@ -29,6 +29,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: data_governance_testing/
           push: true
           tags: ${{ secrets.DOCKER_USER }}/mlops_course:hw_2_github
