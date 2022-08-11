@@ -32,3 +32,18 @@ jobs:
           context: data_governance_testing/
           push: true
           tags: ${{ secrets.DOCKER_USER }}/mlops_course:hw_2_github
+          
+      -
+        name: Pyhton predict
+        run: |
+          cd data_governance_testing/
+          pip3 install -r requirements.txt 
+          python3 train.py
+          
+          echo "## Metrics result" > report.md
+          cat metrics.txt >> report.md
+          
+          cml-publish feature_importance.png --md >> report.md
+          cml-publish residuals.png --md >> report.md
+          
+          cml-send-comment report.md
