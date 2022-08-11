@@ -6,7 +6,7 @@ import seaborn as sns
 import numpy as np
 import os
 
-os.chdir('ai_service')
+
 # Set random seed
 seed = 42
 

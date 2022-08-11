@@ -14,35 +14,16 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      -
-        name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_USER}}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      -
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: data_governance_testing/
-          push: true
-          tags: ${{ secrets.DOCKER_USER }}/mlops_course:hw_2_github
-          
-      -
         name: Pyhton predict
         run: |
           cd data_governance_testing
-          python3 ai_service/train.py
+          pip3 install -r requirements.txt
+          python3 train.py
           
           echo "## Metrics result" > report.md
           cat metrics.txt >> report.md
           
-          cml-publish ai_service/feature_importance.png --md >> report.md
-          cml-publish ai_service/residuals.png --md >> report.md
+          cml-publish feature_importance.png --md >> report.md
+          cml-publish residuals.png --md >> report.md
           
           cml-send-comment report.md

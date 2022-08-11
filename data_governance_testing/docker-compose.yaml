@@ -3,7 +3,6 @@ services:
   main:
     image: data_governance_testing
     volumes:
-      - ${PWD}/volume:/data
       - ${PWD}/ai_service:/build/ai_service
     env_file:
       - .env
