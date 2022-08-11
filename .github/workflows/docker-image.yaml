@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        uses: iterative/setup-tools@v1
+      -
         name: Checkout
         uses: actions/checkout@v3
       -
