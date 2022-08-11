@@ -10,23 +10,21 @@ jobs:
   run: 
     runs-on: [ ubuntu-latest ]
     container: docker://dvcorg/cml-py3:latest
-    steps:
-      -
-        name: Checkout
+    steps: 
+      - name: Checkout
         uses: actions/checkout@v3
-      -
-        uses: iterative/setup-cml@v1
+      - name: Predict
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd data_governance_testing
           pip3 install -r requirements.txt
           python3 train.py
-          
+
           echo "## Metrics result" > report.md
           cat metrics.txt >> report.md
-          
+
           cml-publish feature_importance.png --md >> report.md
           cml-publish residuals.png --md >> report.md
-          
+
           cml-send-comment report.md
