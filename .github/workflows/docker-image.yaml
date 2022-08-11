@@ -13,14 +13,11 @@ jobs:
     steps:
       -
         name: Checkout
+        uses: actions/checkout@v3
+      -
+        uses: iterative/setup-cml@v1
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        uses: actions/checkout@v3
-
-      -
-       uses: iterative/setup-cml@v1
-      -
-        name: Pyhton predict
         run: |
           cd data_governance_testing
           pip3 install -r requirements.txt
