@@ -18,6 +18,8 @@ jobs:
        uses: iterative/setup-cml@v1
       -
         name: Pyhton predict
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd data_governance_testing
           pip3 install -r requirements.txt
