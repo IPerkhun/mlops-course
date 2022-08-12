@@ -131,3 +131,5 @@ dmypy.json
 */volume
 
 .DS_store
+
+*wine_quality.csv
