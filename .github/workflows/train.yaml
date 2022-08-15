@@ -23,6 +23,7 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          docker run mlops_course:hw-3 cat metrics.txt >> metrics.txt
           echo "## Metrics result" > report.md
-          docker run mlops_course:hw-3 cat metrics.txt >> report.md
-          cml send-comment --update report.md
+          cml-publish metrics.txt --md >> report.md
+          cml-send-comment --update report.md 

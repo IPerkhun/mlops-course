@@ -26,7 +26,6 @@ RUN pip3 install -r requirements.txt \
 
 RUN chmod +x ./decrypt_secret.sh && ./decrypt_secret.sh 
 
-RUN ls -al
 RUN dvc init --no-scm -f
 
 RUN dvc remote add -d storage gdrive://1_mmw4Hh2QEhddm3ePSFRgGyg9JCO_4vo
@@ -34,8 +33,5 @@ RUN dvc remote modify storage gdrive_use_service_account true
 RUN dvc remote modify storage gdrive_service_account_json_file_path $PWD/secrets/gdrive-mlops-course-secrets.json
 
 RUN dvc pull
-RUN ls -al
 
 RUN python3 train.py
-
-RUN ls -al
