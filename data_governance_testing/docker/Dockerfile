@@ -33,5 +33,3 @@ RUN dvc remote modify storage gdrive_use_service_account true
 RUN dvc remote modify storage gdrive_service_account_json_file_path $PWD/secrets/gdrive-mlops-course-secrets.json
 
 RUN dvc pull
-
-RUN python3 train.py

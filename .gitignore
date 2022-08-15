@@ -129,10 +129,10 @@ dmypy.json
 .pyre/
 
 */volume
+*/outputs
 
 .DS_store
 
 *wine_quality.csv
 
 *gdrive-mlops-course-secrets.json
-

@@ -3,6 +3,7 @@ services:
   main:
     image: mlops_course:hw-3
     volumes:
-      - ${PWD}/outputs:/build/outputs
+      - ../outputs:/build/outputs
+      - ../volume:/build/volume
     env_file:
       - .env
