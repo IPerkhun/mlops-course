@@ -18,5 +18,6 @@ jobs:
           --progress=plain --tag=mlops_course:hw-3 . \
           --build-arg GDRIVE_SECRETS_ARG=${{ secrets.GDRIVE_SECRETS }}
       - name: Print Metrics
+        run: |
           echo "## Metrics result" > report.md
           docker run mlops_course:hw-3 cat data_governance_testing/metrics.txt >> report.md
