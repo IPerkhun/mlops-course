@@ -15,8 +15,9 @@ jobs:
       - name: Build container
         run: |
           docker build -f data_governance_testing/Dockerfile \ 
-          --progress=plain --tag=mlops_course:hw-3 . \
-          --build-arg GDRIVE_SECRETS_ARG=${{ secrets.GDRIVE_SECRETS }}
+          --progress=plain --tag=mlops_course:hw-3 \
+          --build-arg GDRIVE_SECRETS_ARG=${{ secrets.GDRIVE_SECRETS }} \
+          ./data_governance_testing
       - name: Print Metrics
         run: |
           echo "## Metrics result" > report.md
