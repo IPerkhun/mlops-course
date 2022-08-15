@@ -14,11 +14,10 @@ jobs:
         uses: actions/checkout@v3
       - name: Build container
         run: |
-          docker build -f data_governance_testing/Dockerfile \ 
-          --progress=plain --tag=mlops_course:hw-3 \
-          --build-arg GDRIVE_SECRETS_ARG=${{ secrets.GDRIVE_SECRETS }} \
-          ./data_governance_testing
+          cd data_governance_testing/
+          docker build --progress=plain --tag=mlops_course:hw-3 \
+          --build-arg GDRIVE_SECRETS_ARG=${{ secrets.GDRIVE_SECRETS }} .
       - name: Print Metrics
         run: |
           echo "## Metrics result" > report.md
-          docker run mlops_course:hw-3 cat data_governance_testing/metrics.txt >> report.md
+          docker run mlops_course:hw-3 cat metrics.txt >> report.md

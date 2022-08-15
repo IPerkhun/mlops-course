@@ -5,7 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN mkdir -p /build
 WORKDIR /build
 
-COPY ${PWD} .
+COPY . .
 
 RUN apt-get -qq update && \
     apt-get -qq install -y --no-install-recommends curl wget build-essential unzip iputils-ping gnupg2 
@@ -20,9 +20,9 @@ RUN apt-get -qq update && \
 RUN pip3 install "dvc[gdrive]"
 
 
-COPY ${PWD}/data_governance_testing/requirements.txt .
-RUN pip3 install -r data_governance_testing/requirements.txt \ 
-    && rm data_governance_testing/requirements.txt
+COPY requirements.txt .
+RUN pip3 install -r requirements.txt \ 
+    && rm requirements.txt
 
 RUN chmod +x ./decrypt_secret.sh && ./decrypt_secret.sh 
 
@@ -34,5 +34,8 @@ RUN dvc remote modify storage gdrive_use_service_account true
 RUN dvc remote modify storage gdrive_service_account_json_file_path $PWD/secrets/gdrive-mlops-course-secrets.json
 
 RUN dvc pull
+RUN ls -al
 
-RUN python3 data_governance_testing/train.py
+RUN python3 train.py
+
+RUN ls -al

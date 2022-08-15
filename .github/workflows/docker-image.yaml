@@ -1,30 +1,30 @@
-name: Docker Image CI
+# name: Docker Image CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+# on:
+#   push:
+#     branches: [ master ]
+#   pull_request:
+#     branches: [ master ]
 
-jobs:
-  run: 
-    runs-on: [ ubuntu-latest ]
-    container: docker://dvcorg/cml-py3:latest
-    steps: 
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Predict
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          pip3 install --upgrade pip
-          pip3 install -r data_governance_testing/requirements.txt
-          python3 data_governance_testing/train.py
+# jobs:
+#   run: 
+#     runs-on: [ ubuntu-latest ]
+#     container: docker://dvcorg/cml-py3:latest
+#     steps: 
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#       - name: Predict
+#         env:
+#           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         run: |
+#           pip3 install --upgrade pip
+#           pip3 install -r data_governance_testing/requirements.txt
+#           python3 data_governance_testing/train.py
 
-          echo "## Metrics result" > report.md
-          cat data_governance_testing/metrics.txt >> report.md
+#           echo "## Metrics result" > report.md
+#           cat data_governance_testing/metrics.txt >> report.md
 
-          cml-publish data_governance_testing/feature_importance.png --md >> report.md
-          cml-publish data_governance_testing/residuals.png --md >> report.md
+#           cml-publish data_governance_testing/feature_importance.png --md >> report.md
+#           cml-publish data_governance_testing/residuals.png --md >> report.md
 
-          cml-send-comment report.md
+#           cml-send-comment report.md
