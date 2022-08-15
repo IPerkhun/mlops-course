@@ -25,4 +25,4 @@ jobs:
         run: |
           echo "## Metrics result" > report.md
           docker run mlops_course:hw-3 cat metrics.txt >> report.md
-          cml send-comment --update report.m
+          cml send-comment --update report.md
