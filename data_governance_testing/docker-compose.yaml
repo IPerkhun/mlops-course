@@ -1,8 +1,8 @@
 version: "3.9"
 services:
   main:
-    image: data_governance_testing
+    image: mlops_course:hw-3
     volumes:
-      - ${PWD}/ai_service:/build/ai_service
+      - ${PWD}/outputs:/build/outputs
     env_file:
       - .env
