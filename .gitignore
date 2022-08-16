@@ -129,7 +129,6 @@ dmypy.json
 .pyre/
 
 */volume
-*/outputs
 
 .DS_store
 

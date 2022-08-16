@@ -1,8 +1,0 @@
-[core]
-    remote = storage
-['remote "myremote"']
-    url = gdrive://1_mmw4Hh2QEhddm3ePSFRgGyg9JCO_4vo
-['remote "storage"']
-    url = gdrive://1_mmw4Hh2QEhddm3ePSFRgGyg9JCO_4vo
-    gdrive_use_service_account = true
-    gdrive_service_account_json_file_path = ../gdrive-mlops-course-secrets.json
