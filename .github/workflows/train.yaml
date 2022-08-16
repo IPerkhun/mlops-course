@@ -25,12 +25,13 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          docker run -it mlops_course:hw-3 bash
-
+          cd docker
+          docker-compose run main bash  
           cd data_governance_testing
-
           chmod +x load_data.sh && ./load_data.sh
-
+          exit
+          cd ..
+          cd data_governance_testing
           echo "## Metrics result" > report.md
           cat outputs/metris.json >> report.md
 
