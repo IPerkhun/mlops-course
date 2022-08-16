@@ -27,7 +27,7 @@ jobs:
         run: |
           cd docker
           docker-compose run main bash  
-          cd data_governance_testing
+          cd ./data_governance_testing
           chmod +x load_data.sh && ./load_data.sh
           exit
           cd ..
