@@ -3,7 +3,6 @@ services:
   main:
     image: mlops_course:hw-3
     volumes:
-      - ../data_governance_testing/outputs:/build/data_governance_testing/outputs
-      - ./data_governance_testing/volume:/build/data_governance_testing/data
+      - ../.:/build
     env_file:
       - .env

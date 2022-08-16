@@ -22,8 +22,7 @@ RUN apt-get -qq update && \
 RUN pip3 install "dvc[gdrive]"
 
 RUN cd ./data_governance_testing \
-    ls -al \
-    pip3 install -r requirements.txt \ 
+    && pip3 install -r requirements.txt \ 
     && rm requirements.txt
 
 

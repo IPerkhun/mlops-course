@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import os
-
+import json
 
 # Set random seed
 seed = 42
@@ -15,7 +15,7 @@ seed = 42
 ################################
 
 # Load in the data
-df = pd.read_csv("volume/wine_quality.csv")
+df = pd.read_csv("dvc_data/wine_quality.csv")
 
 # Split into train and test sections
 y = df.pop("quality")
@@ -35,9 +35,11 @@ train_score = regr.score(X_train, y_train) * 100
 test_score = regr.score(X_test, y_test) * 100
 
 # Write scores to a file
-with open("outputs/metrics.txt", 'w') as outfile:
-        outfile.write("Training variance explained: %2.1f%%\n" % train_score)
-        outfile.write("Test variance explained: %2.1f%%\n" % test_score)
+with open("outputs/metrics.json", 'w+') as outfile:
+        json.dump({
+                "Training variance explained": train_score,
+                "Test variance explained": test_score
+        }, outfile)
 
 
 ##########################################
