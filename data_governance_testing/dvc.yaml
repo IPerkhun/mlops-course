@@ -1,0 +1,10 @@
+stages:
+  train_data:
+    cmd: python3 service/train.py
+    deps:
+    - service/train.py
+    outs:
+    - outputs/feature_importance.png
+    metrics:
+    - outputs/metrics.json:
+        cache: false

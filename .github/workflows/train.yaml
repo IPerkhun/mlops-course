@@ -1,0 +1,40 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  run: 
+    runs-on: [ ubuntu-latest ]
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Install cml
+        uses: iterative/setup-cml@v1
+      
+      - name: Build container
+        run: |
+          docker build --file=./docker/Dockerfile --progress=plain --tag=mlops_course:hw-3 \
+          --build-arg GDRIVE_SECRETS_ARG=${{ secrets.GDRIVE_SECRETS }} .
+      
+      - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          docker run -it mlops_course:hw-3 bash
+
+          cd data_governance_testing
+
+          chmod +x load_data.sh && ./load_data.sh
+
+          echo "## Metrics result" > report.md
+          cat outputs/metris.json >> report.md
+
+          echo "## Plot result" >> report.md
+          cml-publish outputs/feature_importance.png >> report.md
+          
+          cml-send-comment --update report.md 

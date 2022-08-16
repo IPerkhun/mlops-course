@@ -1,0 +1,15 @@
+schema: '2.0'
+stages:
+  train_data:
+    cmd: python3 service/train.py
+    deps:
+    - path: service/train.py
+      md5: dd0c0dd3d70052ac220ec2b998b70419
+      size: 2770
+    outs:
+    - path: outputs/feature_importance.png
+      md5: 442faa957d892780d7a0bcd899669c49
+      size: 46003
+    - path: outputs/metrics.json
+      md5: 664c65e687b37b6e0dddccf33c672fd1
+      size: 97
