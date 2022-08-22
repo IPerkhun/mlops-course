@@ -28,8 +28,8 @@ jobs:
           cd docker
           docker-compose run main docker/load_data.sh --verbose
           
-          apt-get -qq install -y --no-install-recommends gpython3-pip
-          pip3 install "dvc[gdrive]"
+          sudo apt-get -qq install -y --no-install-recommends python3-pip
+          sudo pip3 install "dvc[gdrive]"
           
           cd ..
           cd ./data_governance_testing
