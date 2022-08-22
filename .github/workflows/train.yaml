@@ -26,12 +26,8 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd docker
-          docker-compose run main bash  
-          cd data_governance_testing
-          chmod +x load_data.sh && ./load_data.sh
-          exit
-          cd ..
-          cd data_governance_testing
+          docker-compose run main docker/load_data.sh --verbose
+
           echo "## Metrics result" > report.md
           cat outputs/metris.json >> report.md
 

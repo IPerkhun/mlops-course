@@ -1,11 +1,9 @@
 FROM ubuntu:22.04
 
-
 ARG DEBIAN_FRONTEND=noninteractive
 
 ARG GDRIVE_SECRETS_ARG
 ENV GDRIVE_SECRETS=$GDRIVE_SECRETS_ARG
-
 
 RUN mkdir -p /build
 WORKDIR /build
@@ -25,10 +23,11 @@ RUN cd ./data_governance_testing \
     && pip3 install -r requirements.txt \ 
     && rm requirements.txt
 
-
 RUN cd ./data_governance_testing \
     && chmod +x decrypt_secret.sh \
     && ./decrypt_secret.sh 
 
+RUN cd ./docker && \
+    chmod +x load_data.sh
 
 CMD ping 8.8.8.8

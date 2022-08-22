@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd ./data_governance_testing
 
 chmod +x decrypt_secret.sh && ./decrypt_secret.sh 
 
