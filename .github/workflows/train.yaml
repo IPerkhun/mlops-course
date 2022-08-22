@@ -20,22 +20,23 @@ jobs:
         run: |
           docker build --file=./docker/Dockerfile --progress=plain --tag=mlops_course:hw-3 \
           --build-arg GDRIVE_SECRETS_ARG=${{ secrets.GDRIVE_SECRETS }} .
+
+      - name: Install DVC
+        run: |
+          sudo apt-get -qq install -y --no-install-recommends python3-pip
+          sudo pip3 install "dvc[gdrive]"
       
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          git fetch --prune
+
           cd docker
           docker-compose run main docker/load_data.sh --verbose
-          
-          sudo apt-get -qq install -y --no-install-recommends python3-pip
-          sudo pip3 install "dvc[gdrive]"
-          
-          cd ..
-          cd ./data_governance_testing
+          cd ../data_governance_testing
 
-          echo "## Metrics result" > report.md   
-          git fetch --prune
+          echo "## Metrics result" > report.md             
           dvc metrics diff --show-md master >> report.md
           cat ./outputs/metrics.json >> report.md
 
