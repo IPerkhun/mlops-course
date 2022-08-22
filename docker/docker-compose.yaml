@@ -4,5 +4,4 @@ services:
     image: mlops_course:hw-3
     volumes:
       - ../.:/build
-    env_file:
-      - .env
+
