@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Train Model
 
 on:
   push:
@@ -10,11 +10,14 @@ jobs:
   run: 
     runs-on: [ ubuntu-latest ]
     steps: 
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3        
+        with: 
+          ref: ${{ github.event.pull_request.head.sha }}   
       
-      - name: CML-Actions
-        uses: ToastCoder/cml-actions@0.1.2
+      - uses: iterative/setup-cml@v1
+      - uses: actions/setup-python@v2        
+        with:          
+          python-version: '3.x'
       
       - name: Build container
         run: |
@@ -34,7 +37,7 @@ jobs:
           docker-compose run main docker/load_data.sh --verbose
           cd ..
           
-          echo "## Metrics result" > report.md             
+          echo "## Metrics result" >> report.md             
           cat ./data_governance_testing/outputs/metrics.json  >> report.md
           
           echo "\n" >> report.md
