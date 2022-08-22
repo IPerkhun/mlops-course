@@ -34,8 +34,8 @@ jobs:
           docker-compose run main docker/load_data.sh --verbose
           cd ..
           
-          echo "## Metrics result" > report.md             
-          cat ./data_governance_testing/outputs/metrics.json  >> report.md
+          # echo "## Metrics result" > report.md             
+          # cat ./data_governance_testing/outputs/metrics.json  >> report.md
 
           echo "## Plot result" >> report.md
           cml-publish ./data_governance_testing/outputs/feature_importance.png -- md >> report.md
