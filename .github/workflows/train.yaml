@@ -42,4 +42,4 @@ jobs:
           echo "## Plot result" >> report.md
           cml-publish ./outputs/feature_importance.png -- md >> ../report.md
           
-          cml send-comment --pr ../report.md
+          cml send-comment ../report.md
