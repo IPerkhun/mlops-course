@@ -31,10 +31,10 @@ jobs:
           cd ..
           cd ./data_governance_testing
           
-          ls -al
+          ls -al ./outputs
 
           echo "## Metrics result" > report.md
-          cat outputs/metris.json >> report.md
+          cat ./outputs/metris.json >> report.md
 
           echo "## Plot result" >> report.md
           cml-publish outputs/feature_importance.png >> report.md
