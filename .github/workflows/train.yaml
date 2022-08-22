@@ -37,7 +37,6 @@ jobs:
           cd ../data_governance_testing
 
           echo "## Metrics result" > report.md             
-          dvc metrics diff --show-md master >> report.md
           cat ./outputs/metrics.json >> report.md
 
           echo "## Plot result" >> report.md
