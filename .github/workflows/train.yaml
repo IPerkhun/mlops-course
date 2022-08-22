@@ -30,16 +30,13 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git fetch --prune
-
           cd docker
           docker-compose run main docker/load_data.sh --verbose
-          cd ../data_governance_testing
 
-          echo "## Metrics result" > ../report.md             
-          cat ./outputs/metrics.json  >> ../report.md
+          echo "## Metrics result" > report.md             
+          cat ./data_governance_testing/outputs/metrics.json  >> report.md
 
           echo "## Plot result" >> report.md
-          cml-publish ./outputs/feature_importance.png -- md >> ../report.md
+          cml-publish ./data_governance_testing/outputs/feature_importance.png -- md >> report.md
           
-          cml send-comment ../report.md
+          cml send-comment report.md
