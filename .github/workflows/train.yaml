@@ -32,7 +32,8 @@ jobs:
         run: |
           cd docker
           docker-compose run main docker/load_data.sh --verbose
-
+          cd ..
+          
           echo "## Metrics result" > report.md             
           cat ./data_governance_testing/outputs/metrics.json  >> report.md
 
